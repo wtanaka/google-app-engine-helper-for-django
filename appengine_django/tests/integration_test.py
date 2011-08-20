@@ -41,10 +41,20 @@ LOGIN_URL = '/_ah/login'
 # TODO: get an interface for this into the SDK proper
 # ########
 
-def start_server(root_path=ROOT_PATH, port=PORT, app_id=APP_ID):
+def get_appid():
+  fp = open(os.path.join(ROOT_PATH, 'app.yaml'))
+  app = fp.readline()
+  fp.close()
+  try:
+    key, value = app.split(':', 1)
+  except ValueError:
+    return APP_ID
+  return value.strip()
+
+def start_server(root_path=ROOT_PATH, port=PORT):
   dev_appserver.ApplicationLoggingHandler.InitializeTemplates(
       'HEADER', 'SCRIPT', 'MIDDLE', 'FOOTER')
-  dev_appserver.SetupStubs(app_id,
+  dev_appserver.SetupStubs(get_appid(),
                            login_url=LOGIN_URL,
                            datastore_path='/dev/null',
                            history_path='/dev/null',
