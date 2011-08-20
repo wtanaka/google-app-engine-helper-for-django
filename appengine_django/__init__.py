@@ -134,6 +134,7 @@ def LoadSdk():
         os.path.join(SDK_PATH, 'lib', 'webob'),
         os.path.join(SDK_PATH, 'lib', 'yaml', 'lib'),
         os.path.join(SDK_PATH, 'lib', 'fancy_urllib'),
+        os.path.join(SDK_PATH, 'lib', 'simplejson'),
         os.path.join(SDK_PATH, 'lib', 'whoosh'),
         os.path.join(SDK_PATH, 'lib', 'protorpc'),
         os.path.join(SDK_PATH, 'lib', 'graphy'),
